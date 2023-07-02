@@ -1,0 +1,227 @@
+@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Recia";
+    src: url("../fonts/Recia-Variable.woff2") format("woff2"),
+        url("../fonts/Recia-Variable.woff") format("woff"),
+        url("../fonts/Recia-Variable.ttf") format("truetype");
+    font-weight: 300 700;
+    font-display: swap;
+    font-style: normal;
+}
+
+@layer base {
+    * {
+        font-family: "Familjen Grotesk", sans-serif;
+    }
+    p {
+        @apply text-gray-900;
+        font-family: "Recia", serif;
+    }
+    a:hover:not(.btn) {
+        @apply text-blue-600 transition-all;
+    }
+    .home {
+        @apply text-center;
+    }
+
+    .lg-title {
+        font-size: 86px;
+        line-height: 1.5;
+    }
+    .title-1 {
+        font-size: 64px;
+        line-height: 1.5;
+    }
+    .title-2 {
+        font-size: 48px;
+        line-height: 1.5;
+    }
+    .title-3 {
+        font-size: 40px;
+        line-height: 1.5;
+    }
+    .headline {
+        font-size: 32px;
+        line-height: 1.5;
+    }
+    .body {
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .callout {
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .subhead {
+        font-size: 24px;
+        line-height: 1.5;
+    }
+    .footnote {
+        font-size: 20px;
+        line-height: 1.5;
+    }
+    .caption-1 {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+    .caption-2 {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+    .bg-hero {
+        background: linear-gradient(
+                105.34deg,
+                rgba(254, 218, 255, 0.5) 5.72%,
+                rgba(191, 226, 255, 0.5) 94.56%
+            ),
+            linear-gradient(
+                180deg,
+                rgba(197, 209, 255, 0.9) 0%,
+                rgba(255, 255, 255, 0.9) 100%
+            );
+    }
+
+    .bg-third {
+        background: linear-gradient(
+                105.34deg,
+                rgba(254, 218, 255, 0.5) 5.72%,
+                rgba(191, 226, 255, 0.5) 94.56%
+            ),
+            linear-gradient(
+                180deg,
+                rgba(197, 209, 255, 0.9) 0%,
+                rgba(255, 255, 255, 0.9) 100%
+            );
+    }
+}
+
+@layer components {
+    .input-field {
+        @apply rounded-full py-3 px-9 border-[1px] border-primary-500 outline-none focus:ring-4 focus:ring-primary-0 transition-all;
+    }
+    .input-field-2 {
+        @apply rounded-full py-3 px-9 border-[1px] border-neutral-900 outline-none focus:ring-4 focus:ring-primary-0 transition-all;
+    }
+    .btn {
+        @apply hover:bg-primary-500 transition-all py-3 rounded-full bg-primary-main text-white w-fit min-w-[175px] font-recia;
+    }
+    .btn-outline {
+        @apply hover:bg-primary-0 transition-all py-3 rounded-full border-[1px] border-primary-main text-primary-main w-fit min-w-[175px] flex items-center gap-3 justify-center;
+    }
+    .nav-item-mobile {
+        @apply font-recia block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700;
+    }
+    .indicator[aria-current="false"] {
+        background: #d9d9d9;
+    }
+    .indicator[aria-current="true"] {
+        background: #339dff;
+    }
+    .card-katalog:hover{
+        @apply transition-all duration-300 -translate-y-3
+    }
+}
+
+.fade-in {
+    animation: fadeIn 500ms;
+    -webkit-animation: fadeIn 500ms;
+    -moz-animation: fadeIn 500ms;
+    -o-animation: fadeIn 500ms;
+    -ms-animation: fadeIn 500ms;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .lg-title {
+        font-size: 60px;
+    }
+    .title-1 {
+        font-size: 40px;
+    }
+    .title-2 {
+        font-size: 40px;
+    }
+    .title-3 {
+        font-size: 32px;
+    }
+    .headline {
+        font-size: 24px;
+    }
+    .body {
+        font-size: 16px;
+    }
+    .callout {
+        font-size: 20px;
+    }
+    .subhead {
+        font-size: 18px;
+    }
+    .footnote {
+        font-size: 16px;
+    }
+    .caption-1 {
+        font-size: 14px;
+    }
+    .caption-2 {
+        font-size: 12px;
+    }
+}
