@@ -35,9 +35,12 @@ class PageController extends Controller
         return view('katalog', compact('katalogs'));
     }
 
-    public function detail()
+    public function detail($id)
     {
-        return view('detail');
+        $katalogs = Katalog::all();
+        $katalog = Katalog::where('id', $id)->first();
+
+        return view('detail', ["katalogs" => $katalogs, "katalog" => $katalog]);
     }
 
     public function cart()

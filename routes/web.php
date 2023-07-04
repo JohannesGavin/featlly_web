@@ -10,7 +10,7 @@ use App\Http\Controllers\OrderController;
 Route::get('/tentang-kami', [PageController::class, 'tentangKami'])->name('tentang-kami');
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/katalog', [PageController::class, 'katalog'])->name('katalog');
-Route::get('/detail', [PageController::class, 'detail'])->name('detail');
+Route::get('/detail/{id}', [PageController::class, 'detail'])->name('detail');
 Route::get('/cart', [PageController::class, 'cart'])->name('cart')->middleware('auth');;
 Route::get('/wishlist', [PageController::class, 'wishlist'])->name('wishlist')->middleware('auth');;
 Route::get('/buy-info', [PageController::class, 'buyInfo'])->name('buy-info')->middleware('auth');;

@@ -4,7 +4,7 @@
     <main class="py-14">
         <section class="container px-4">
             <h1 class="title-1">Daftar</h1>
-            <p class="footnote">Masukkan e-mail & password anda</p>
+            <p class="footnote">Masukkan nama lengkap, e-mail, & password anda</p>
 
             <form action="{{ route('store') }}" method="post" class="flex flex-col gap-4 mt-8 md:mt-12 max-w-[427px]">
                 @csrf

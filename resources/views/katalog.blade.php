@@ -21,9 +21,10 @@
 
         <section class="container px-4 grid grid-cols-6 mt-12 md:mt-20 gap-10 mb-12 md:mb-20" data-aos="fade-up">
             @foreach ($katalogs as $item)
-                <a href="{{ route('detail') }}" class="card-produk self-center flex flex-col col-span-3 md:col-span-2">
+                <a href="{{ route('detail', ['id' => $item->id]) }}"
+                    class="card-produk self-center flex flex-col col-span-3 md:col-span-2">
                     <img src="{{ asset('storage/images/' . $item->gambar[0]) }}"
-                        class="w-32 md:w-[425px] object-cover self-center h-32 md:h-[425px] bg-[#F4F3FC] rounded-2xl"
+                        class="w-full md:w-full object-cover self-center h-32 md:h-[425px] bg-[#F4F3FC] rounded-2xl"
                         alt="">
                     <div class="flex flex-col gap-1 mt-2">
                         <p class="caption-2 text-neutral-300">{{ $item->kategori }}</p>
