@@ -4,7 +4,7 @@
     <main class="py-14 mb-20">
         <section class="container px-4">
             <h1 class="headline font-bold mb-10 text-center md:text-left">Pesanan</h1>
-            @include("components.pesanan-mobile")
+            @include('components.pesanan-mobile')
             <div class="hidden md:flex flex-col max-w-[1025px] gap-7">
                 <div class="row head grid grid-cols-6 gap-8">
                     <p class="col-span-2 footnote">
@@ -36,7 +36,8 @@
                         Rp99.000
                     </div>
                     <div class="flex items-center gap-2">
-                        <button class="btn py-3 !w-fit min-w-0 px-10 flex items-center text-center">Bayar</button>
+                        <a href="{{ route('confirm') }}"
+                            class="btn py-3 !w-fit min-w-0 px-10 flex items-center text-center">Bayar</a>
                     </div>
                     <div class="flex items-center">
                         Belum bayar
@@ -58,7 +59,7 @@
                         Rp99.000
                     </div>
                     <div class="flex items-center gap-2">
-                        <button class="btn py-3 !w-fit min-w-0 px-10 flex items-center text-center">Bayar</button>
+                        <a href="{{ route('confirm') }}" class="btn py-3 !w-fit min-w-0 px-10 flex items-center text-center">Bayar</a>
                     </div>
                     <div class="flex items-center">
                         Belum bayar

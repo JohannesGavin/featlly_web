@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="mb-12">
-        <a href="{{ route('admin.tambah-katalog') }}" class="btn btn-primary px-5">Tambah Katalog</a>
+        <a href="{{ route('admin.katalog.create') }}" class="btn btn-primary px-5">Tambah Katalog</a>
     </div>
     <table class="w-full text-sm text-left text-neutral-500 rounded-md overflow-hidden">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
@@ -25,6 +25,9 @@
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Harga
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Harga Promo
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Gambar
@@ -53,6 +56,9 @@
                         {{ $item->harga }}
                     </td>
                     <td scope="col" class="px-6 py-3">
+                        {{ $item->harga_promo }}
+                    </td>
+                    <td scope="col" class="px-6 py-3">
                         @isset($item->gambar)
                             @foreach ($item->gambar as $gambar)
                                 <img src="{{ asset('storage/images/' . $gambar) }}" width="40" height="40"
@@ -62,10 +68,14 @@
                     </td>
                     <td scope="col" class="px-6 py-3">
                         <div class="flex flex-col gap-2 items-center">
-                            <button>Edit</button>
-                            <button>
-                                <img src="{{ asset('assets/img/x-square.svg') }}" alt="">
-                            </button>
+                            <a href="{{ route('admin.katalog.edit', $item->id) }}">Edit</a>
+                            <form action="{{ route('admin.katalog.destroy', $item->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">
+                                    <img src="{{ asset('assets/img/x-square.svg') }}" alt="">
+                                </button>
+                            </form>
                         </div>
                     </td>
                 </tr>

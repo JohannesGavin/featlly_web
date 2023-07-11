@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\OrderController;
+use App\Models\Katalog;
 
 Route::get('/tentang-kami', [PageController::class, 'tentangKami'])->name('tentang-kami');
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -14,6 +15,8 @@ Route::get('/detail/{id}', [PageController::class, 'detail'])->name('detail');
 Route::get('/cart', [PageController::class, 'cart'])->name('cart')->middleware('auth');;
 Route::get('/wishlist', [PageController::class, 'wishlist'])->name('wishlist')->middleware('auth');;
 Route::get('/buy-info', [PageController::class, 'buyInfo'])->name('buy-info')->middleware('auth');;
+Route::get('/confirm', [PageController::class, 'confirm'])->name('confirm')->middleware('auth');;
+Route::post('/confirm', [PageController::class, 'confirmPost'])->name('confirm')->middleware('auth');;
 Route::get('/create-order', [PageController::class, 'createOrder'])->name('create-order');
 Route::get('/profil', [PageController::class, 'profil'])->name('profil');
 Route::get('/order', [PageController::class, 'order'])->name('order')->middleware('auth');
@@ -22,10 +25,12 @@ Route::get('/order-history', [PageController::class, 'orderHistory'])->name('ord
 // Group routes for admin section
 Route::middleware('admin')->prefix('admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'adminDashboard'])->name('dashboard');
-    Route::get('/katalog', [AdminController::class, 'adminKatalog'])->name('katalog');
+    Route::get('/', [AdminController::class, 'adminDashboard'])->name('dashboard');
     Route::get('/pesanan', [AdminController::class, 'adminPesanan'])->name('pesanan');
-    Route::get('/add-katalog', [AdminController::class, 'addKatalogView'])->name('tambah-katalog');
-    Route::post('/add-katalog', [KatalogController::class, 'store'])->name('store-katalog');
+    Route::resource('katalog', KatalogController::class);
+    // Route::get('/katalog', [AdminController::class, 'adminKatalog'])->name('katalog');
+    // Route::get('/add-katalog', [AdminController::class, 'addKatalogView'])->name('tambah-katalog');
+    // Route::post('/add-katalog', [KatalogController::class, 'store'])->name('store-katalog');
 });
 
 Route::controller(LoginRegisterController::class)->group(function () {

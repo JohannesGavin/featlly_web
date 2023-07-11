@@ -34,7 +34,7 @@ class OrderController extends Controller
 
         $order->save();
 
-        return redirect()->route('profil')->with('success', 'Pesanan telah berhasil dibuat!');
+        return redirect()->route('confirm')->with('success', 'Pesanan telah berhasil dibuat!');
     }
 
     /**

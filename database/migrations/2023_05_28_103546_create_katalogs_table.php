@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('kategori');
             $table->text('detail');
             $table->integer('harga');
+            $table->integer('harga_promo')->nullable();
+            $table->boolean('is_sale');
         });
     }
 

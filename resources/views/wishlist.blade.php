@@ -35,9 +35,9 @@
                         Rp99.000
                     </div>
                     <div class="flex items-center gap-2 lg:col-span-1">
-                        <button class="flex gap-2 items-center">
+                        <a href="{{ route('cart') }}" class="flex gap-2 items-center">
                             <img src="{{ asset('/assets/img/cart.svg') }}" alt="">
-                        </button>
+                        </a>
                     </div>
                     <div class="flex items-center">
                         <button class="flex gap-2 items-center">
@@ -61,9 +61,9 @@
                         Rp99.000
                     </div>
                     <div class="flex items-center gap-2 lg:col-span-1">
-                        <button class="flex gap-2 items-center">
+                        <a href="{{ route('cart') }}" class="flex gap-2 items-center">
                             <img src="{{ asset('/assets/img/cart.svg') }}" alt="">
-                        </button>
+                        </a>
                     </div>
                     <div class="flex items-center">
                         <button class="flex gap-2 items-center">

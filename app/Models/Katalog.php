@@ -14,6 +14,8 @@ class Katalog extends Model
         'kategori',
         'detail',
         'harga',
+        'harga_promo',
+        'is_sale',
         'gambar',
     ];
 

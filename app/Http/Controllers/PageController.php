@@ -32,7 +32,12 @@ class PageController extends Controller
     public function katalog()
     {
         $katalogs = Katalog::all();
-        return view('katalog', compact('katalogs'));
+        $sale = Katalog::where('is_sale', 1)->get();
+        $atasan = Katalog::where('kategori', "Atasan")->get();
+        $bawahan = Katalog::where('kategori', "Bawahan")->get();
+        $aksesoris = Katalog::where('kategori', "Aksesoris")->get();
+
+        return view('katalog', compact('katalogs', 'sale', 'atasan', 'bawahan', 'aksesoris'));
     }
 
     public function detail($id)
@@ -56,6 +61,22 @@ class PageController extends Controller
     public function buyInfo()
     {
         return view('buy-info');
+    }
+
+    public function confirm()
+    {
+        return view('confirm');
+    }
+
+    public function confirmPost()
+    {
+        if (Auth::check()) {
+            $user = Auth::user();
+        } else {
+            $user = null;
+        }
+
+        return redirect()->route('profil')->with('success', 'Konfirmasi pembayaran berhasil');
     }
 
     public function createOrder()

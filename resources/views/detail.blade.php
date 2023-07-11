@@ -7,7 +7,8 @@
 
             <div class="flex-grow flex-1 gap-4 hidden md:grid grid-cols-2">
                 @foreach ($katalog->gambar as $image)
-                    <img src="{{ asset('storage/images/' . $image) }}" class="bg-[#F4F3FC] rounded-2xl col-span-1" alt="">
+                    <img src="{{ asset('storage/images/' . $image) }}" class="bg-[#F4F3FC] rounded-2xl col-span-1"
+                        alt="">
                 @endforeach
             </div>
             <div class="flex-1 flex-grow d">
@@ -15,13 +16,26 @@
                 <h1 class="text-2xl md:headline font-bold">{{ $katalog->nama }}</h1>
                 <p class="text-sm md:text-lg text-neutral-400">{{ $katalog->detail }}</p>
 
-                <p class="mt-8 text-2xl md:headline font-bold">Rp{{ $katalog->harga }}</p>
+                <div class="flex items-center gap-3">
+                    @if ($katalog->harga_promo)
+                        <p class="line-through text-gray-400 mt-8 text-2xl md:headline font-bold">
+                            Rp{{ number_format($katalog->harga, 2, '.', ',') }}
+                        </p>
+                        <p class="mt-8 text-2xl md:headline font-bold">
+                            Rp{{ number_format($katalog->harga_promo, 2, '.', ',') }}
+                        </p>
+                    @else
+                        <p class="mt-8 text-2xl md:headline font-bold">
+                            Rp{{ number_format($katalog->harga, 2, '.', ',') }}
+                        </p>
+                    @endif
+                </div>
 
                 <div class="flex flex-col gap-4 mt-7">
-                    <button class="btn-outline w-full lg:w-[440px]">Tambahkan ke Keranjang <img
-                            src="{{ asset('assets/img/cart-blue.svg') }}" alt=""></button>
-                    <button class="btn-outline w-full lg:w-[440px]">Tambahkan Ke Wishlist <img
-                            src="{{ asset('assets/img/love-blue.svg') }}" alt=""></button>
+                    <a href="{{ route('cart') }}" class="btn-outline w-full lg:w-[440px]">Tambahkan ke Keranjang <img
+                            src="{{ asset('assets/img/cart-blue.svg') }}" alt=""></a>
+                    <a href="{{ route('wishlist') }}" class="btn-outline w-full lg:w-[440px]">Tambahkan Ke Wishlist <img
+                            src="{{ asset('assets/img/love-blue.svg') }}" alt=""></a>
                 </div>
             </div>
         </section>
@@ -37,7 +51,19 @@
                     <div class="flex flex-col gap-1 mt-2">
                         <p class="caption-2 text-neutral-300">{{ $item->kategori }}</p>
                         <p class="caption-2 font-medium">{{ $item->nama }}</p>
-                        <p class="price md:mt-3 font-semibold footnote">Rp{{ $item->harga }}</p>
+
+                        @if ($item->harga_promo)
+                            <p class="price line-through text-gray-400 md:mt-3 font-semibold footnote">
+                                Rp{{ number_format($item->harga, 2, '.', ',') }}
+                            </p>
+                            <p class="price md:mt-3 font-semibold footnote">
+                                Rp{{ number_format($item->harga_promo, 2, '.', ',') }}
+                            </p>
+                        @else
+                            <p class="price md:mt-3 font-semibold footnote">
+                                Rp{{ number_format($item->harga, 2, '.', ',') }}
+                            </p>
+                        @endif
                     </div>
                 </a>
             @endforeach
