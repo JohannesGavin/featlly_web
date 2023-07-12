@@ -51,7 +51,7 @@
                     <div class="flex flex-col gap-1 mt-2">
                         <p class="caption-2 text-neutral-300">{{ $item->kategori }}</p>
                         <p class="caption-2 font-medium">{{ $item->nama }}</p>
-
+                        
                         @if ($item->harga_promo)
                             <p class="price line-through text-gray-400 md:mt-3 font-semibold footnote">
                                 Rp{{ number_format($item->harga, 2, '.', ',') }}

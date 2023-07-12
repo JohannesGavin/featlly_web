@@ -13,7 +13,9 @@ class KatalogController extends Controller
      */
     public function index()
     {
-        //
+        $katalog = Katalog::all();
+
+        return view('admin-katalog', ['katalog' => $katalog]);
     }
 
     /**
@@ -21,7 +23,7 @@ class KatalogController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin-add-katalog');
     }
 
     /**
@@ -35,6 +37,7 @@ class KatalogController extends Controller
             'kategori' => 'required',
             'detail' => 'required',
             'harga' => 'required|numeric',
+            'harga_promo' => '',
         ]);
 
         $katalog = new Katalog([
@@ -42,6 +45,8 @@ class KatalogController extends Controller
             'kategori' => $validatedData['kategori'],
             'detail' => $validatedData['detail'],
             'harga' => $validatedData['harga'],
+            'harga_promo' => $validatedData['harga_promo'],
+            'is_sale' => $validatedData['harga_promo'] != 0
         ]);
 
         if ($request->hasFile('images')) {
@@ -60,7 +65,7 @@ class KatalogController extends Controller
 
         $katalog->save();
 
-        return redirect()->route('admin.katalog')->with('success', 'Katalog berhasil ditambahkan');
+        return redirect()->route('admin.katalog.index')->with('success', 'Katalog berhasil ditambahkan');
     }
 
 
@@ -77,7 +82,7 @@ class KatalogController extends Controller
      */
     public function edit(Katalog $katalog)
     {
-        //
+        return view('admin-edit-katalog', compact('katalog'));
     }
 
     /**
@@ -86,6 +91,38 @@ class KatalogController extends Controller
     public function update(UpdateKatalogRequest $request, Katalog $katalog)
     {
         //
+        $request->validate([
+            'nama' => 'required',
+            'kategori' => 'required',
+            'detail' => 'required',
+            'harga' => 'required|numeric',
+            'harga_promo' => '',
+        ]);
+
+        if ($request->hasFile('images')) {
+            $images = $request->file('images');
+            $imagePaths = [];
+
+            foreach ($images as $image) {
+                $timestamp = time();
+                $filename = $timestamp . '_' . $image->getClientOriginalName();
+                $image->storeAs('public/images', $filename);
+                $imagePaths[] = $filename;
+            }
+
+            $katalog->gambar = $imagePaths;
+        }
+
+        $katalog->nama = $request->input('nama');
+        $katalog->kategori = $request->input('kategori');
+        $katalog->detail = $request->input('detail');
+        $katalog->harga = $request->input('harga');
+        $katalog->harga_promo = $request->input('harga_promo');
+        $katalog->is_sale = $katalog->harga_promo != "";
+
+        $katalog->update();
+
+        return redirect()->route('admin.katalog.index')->with('success', 'Katalog berhasil diupdate');
     }
 
     /**
@@ -94,5 +131,8 @@ class KatalogController extends Controller
     public function destroy(Katalog $katalog)
     {
         //
+        $katalog->delete();
+
+        return redirect()->route('admin.katalog.index')->with('success', 'Katalog berhasil dihapus');
     }
 }

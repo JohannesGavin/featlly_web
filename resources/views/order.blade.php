@@ -30,10 +30,10 @@
                         <img src="{{ asset('assets/img/baju.png') }}" class="rounded-xl bg-[#E0E0E0] h-[95px] w-[95px]"
                             alt="">
 
-                        <p class="">Crewneck Plato Projector</p>
+                        <p class="">Crewneck Rainbow</p>
                     </div>
                     <div class="flex items-center">
-                        Rp99.000
+                        2 item
                     </div>
                     <div class="flex items-center gap-2">
                         <a href="{{ route('confirm') }}"
@@ -53,16 +53,16 @@
                         <img src="{{ asset('assets/img/baju.png') }}" class="rounded-xl bg-[#E0E0E0] h-[95px] w-[95px]"
                             alt="">
 
-                        <p class="">Crewneck Plato Projector</p>
+                        <p class="">Crewneck Rainbow</p>
                     </div>
                     <div class="flex items-center">
-                        Rp99.000
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <a href="{{ route('confirm') }}" class="btn py-3 !w-fit min-w-0 px-10 flex items-center text-center">Bayar</a>
+                        2 item
                     </div>
                     <div class="flex items-center">
-                        Belum bayar
+                        Lunas
+                    </div>
+                    <div class="flex items-center">
+                        Selesai
                     </div>
                     <div class="flex items-center">
                         Rp 198.000

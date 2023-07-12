@@ -23,8 +23,8 @@
             <div class="flex flex-col gap-12 mt-10">
                 <a class="{{ Route::current()->getName() == 'admin.dashboard' ? 'font-bold text-primary-500' : '' }}"
                     href="{{ route('admin.dashboard') }}">Dashboard</a>
-                <a class="{{ Route::current()->getName() == 'admin.katalog' ? 'font-bold text-primary-500' : '' }}"
-                    href="{{ route('admin.katalog') }}">Katalog</a>
+                <a class="{{ Route::current()->getName() == 'admin.katalog.index' ? 'font-bold text-primary-500' : '' }}"
+                    href="{{ route('admin.katalog.index') }}">Katalog</a>
                 <a class="{{ Route::current()->getName() == 'admin.pesanan' ? 'font-bold text-primary-500' : '' }}"
                     href="{{ route('admin.pesanan') }}">Pesanan</a>
                 <a class="{{ Route::current()->getName() == 'admin.keluar' ? 'font-bold text-primary-500' : '' }}"

@@ -28,7 +28,7 @@
                         <img src="{{ asset('assets/img/baju.png') }}" class="rounded-xl bg-[#E0E0E0] h-[95px] w-[95px]"
                             alt="">
                         <div>
-                            <p class="text-sm md:text-base">Crewneck Plato Projector</p>
+                            <p class="text-sm md:text-base">Crewneck Rainbow</p>
                             <p class="lg:hidden text-sm">Rp99.000</p>
                             <div class="order-2 md:hidden flex lg:order-3 items-center gap-2 mt-2">
                                 <button><img height="18" width="18" src="{{ asset('/assets/img/minus-circle.svg') }}" alt=""></button>
@@ -57,7 +57,7 @@
 
                 <hr>
 
-                <hr>
+                
                 <div class="col-span-6 flex flex-col items-end">
                     <div class="flex gap-6 items-center">
                         <p class="text-[20px]">Total</p>

@@ -6,7 +6,7 @@
 
 @section('content')
     <div class="flex gap-9">
-        <a href="{{ route('admin.katalog') }}" class="bg-white rounded-2xl pl-2 px-9 py-6 flex items-center">
+        <a href="{{ route('admin.katalog.index') }}" class="bg-white rounded-2xl pl-2 px-9 py-6 flex items-center">
             <img src="{{ asset('/assets/img/order-admin.svg') }}" alt="">
             <div class="flex flex-col justify-between">
                 <p class="text-[48px]">{{ $katalog }}</p>

@@ -32,7 +32,7 @@
                         <img src="{{ asset('assets/img/baju.png') }}" class="rounded-xl bg-[#E0E0E0] h-[95px] w-[95px]"
                             alt="">
                         <div>
-                            <p class="text-sm md:text-base">Crewneck Plato Projector</p>
+                            <p class="text-sm md:text-base">Crewneck Rainbow</p>
                             <div class="mt-1 text-sm md:text-base md:hidden flex items-center gap-2">
                                 2 buah
                             </div>
@@ -45,7 +45,7 @@
                         Rp99.000
                     </div>
                     <div class="items-center gap-2 hidden md:flex">
-                        1
+                        1 item
                     </div>
                     <div class="items-center hidden md:flex">
                         Rp99.000
