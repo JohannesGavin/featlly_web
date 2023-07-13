@@ -7,7 +7,7 @@
                 <div class="bg-green-100 p-3 rounded-md col-span-12 mb-5 text-green-800">{{ session('success') }}</div>
             @endif
             <div class="flex flex-col col-span-12 lg:col-span-4 gap-6 rounded-md order-2 md:order-1 mt-12 lg:mt-0">
-                @if (Auth::user()->isAdmin())
+                @if (Auth::user() !== null && Auth::user()->isAdmin())
                     <a href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
                 @endif
                 <a href="{{ route('order') }}">Pesanan</a>

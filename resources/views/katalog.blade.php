@@ -24,14 +24,14 @@
             data-aos="fade-up">
             @foreach ($katalogs as $item)
                 <a href="{{ route('detail', ['id' => $item->id]) }}"
-                    class="card-produk self-center flex flex-col col-span-3 md:col-span-2">
+                    class="card-produk self-center flex flex-col h-full col-span-3 md:col-span-2">
                     <img src="{{ asset('storage/images/' . $item->gambar[0]) }}"
                         class="w-full md:w-full object-cover self-center h-32 md:h-[425px] bg-[#F4F3FC] rounded-2xl"
                         alt="">
                     <div class="flex flex-col gap-1 mt-2">
                         <p class="caption-2 text-neutral-300">{{ $item->kategori }}</p>
                         <p class="caption-2 font-medium">{{ $item->nama }}</p>
-                        <div class="flex items-center gap-3">
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-0 lg:gap-3">
                             @if ($item->harga_promo)
                                 <p class="price line-through text-gray-400 md:mt-3 font-semibold footnote">
                                     Rp{{ number_format($item->harga, 2, '.', ',') }}
@@ -59,14 +59,14 @@
             data-aos="fade-up">
             @foreach ($sale as $item)
                 <a href="{{ route('detail', ['id' => $item->id]) }}"
-                    class="card-produk self-center flex flex-col col-span-3 md:col-span-2">
+                    class="card-produk self-center flex flex-col h-full col-span-3 md:col-span-2">
                     <img src="{{ asset('storage/images/' . $item->gambar[0]) }}"
                         class="w-full md:w-full object-cover self-center h-32 md:h-[425px] bg-[#F4F3FC] rounded-2xl"
                         alt="">
                     <div class="flex flex-col gap-1 mt-2">
                         <p class="caption-2 text-neutral-300">{{ $item->kategori }}</p>
                         <p class="caption-2 font-medium">{{ $item->nama }}</p>
-                        <div class="flex items-center gap-3">
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-0 lg:gap-3">
                             @if ($item->harga_promo)
                                 <p class="price line-through text-gray-400 md:mt-3 font-semibold footnote">
                                     Rp{{ number_format($item->harga, 2, '.', ',') }}
@@ -94,14 +94,14 @@
             data-aos="fade-up">
             @foreach ($bawahan as $item)
                 <a href="{{ route('detail', ['id' => $item->id]) }}"
-                    class="card-produk self-center flex flex-col col-span-3 md:col-span-2">
+                    class="card-produk self-center flex flex-col h-full col-span-3 md:col-span-2">
                     <img src="{{ asset('storage/images/' . $item->gambar[0]) }}"
                         class="w-full md:w-full object-cover self-center h-32 md:h-[425px] bg-[#F4F3FC] rounded-2xl"
                         alt="">
                     <div class="flex flex-col gap-1 mt-2">
                         <p class="caption-2 text-neutral-300">{{ $item->kategori }}</p>
                         <p class="caption-2 font-medium">{{ $item->nama }}</p>
-                        <div class="flex items-center gap-3">
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-0 lg:gap-3">
                             @if ($item->harga_promo)
                                 <p class="price line-through text-gray-400 md:mt-3 font-semibold footnote">
                                     Rp{{ number_format($item->harga, 2, '.', ',') }}
@@ -129,14 +129,14 @@
             data-aos="fade-up">
             @foreach ($atasan as $item)
                 <a href="{{ route('detail', ['id' => $item->id]) }}"
-                    class="card-produk self-center flex flex-col col-span-3 md:col-span-2">
+                    class="card-produk self-center flex flex-col h-full col-span-3 md:col-span-2">
                     <img src="{{ asset('storage/images/' . $item->gambar[0]) }}"
                         class="w-full md:w-full object-cover self-center h-32 md:h-[425px] bg-[#F4F3FC] rounded-2xl"
                         alt="">
                     <div class="flex flex-col gap-1 mt-2">
                         <p class="caption-2 text-neutral-300">{{ $item->kategori }}</p>
                         <p class="caption-2 font-medium">{{ $item->nama }}</p>
-                        <div class="flex items-center gap-3">
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-0 lg:gap-3">
                             @if ($item->harga_promo)
                                 <p class="price line-through text-gray-400 md:mt-3 font-semibold footnote">
                                     Rp{{ number_format($item->harga, 2, '.', ',') }}
@@ -164,14 +164,14 @@
             data-aos="fade-up">
             @foreach ($aksesoris as $item)
                 <a href="{{ route('detail', ['id' => $item->id]) }}"
-                    class="card-produk self-center flex flex-col col-span-3 md:col-span-2">
+                    class="card-produk self-center flex flex-col h-full col-span-3 md:col-span-2">
                     <img src="{{ asset('storage/images/' . $item->gambar[0]) }}"
                         class="w-full md:w-full object-cover self-center h-32 md:h-[425px] bg-[#F4F3FC] rounded-2xl"
                         alt="">
                     <div class="flex flex-col gap-1 mt-2">
                         <p class="caption-2 text-neutral-300">{{ $item->kategori }}</p>
                         <p class="caption-2 font-medium">{{ $item->nama }}</p>
-                        <div class="flex items-center gap-3">
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-0 lg:gap-3">
                             @if ($item->harga_promo)
                                 <p class="price line-through text-gray-400 md:mt-3 font-semibold footnote">
                                     Rp{{ number_format($item->harga, 2, '.', ',') }}

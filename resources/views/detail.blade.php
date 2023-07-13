@@ -18,7 +18,7 @@
 
                 <div class="flex items-center gap-3">
                     @if ($katalog->harga_promo)
-                        <p class="line-through text-gray-400 mt-8 text-2xl md:headline font-bold">
+                        <p class="line-through text-gray-400 mt-8 text-xl md:headline font-bold">
                             Rp{{ number_format($katalog->harga, 2, '.', ',') }}
                         </p>
                         <p class="mt-8 text-2xl md:headline font-bold">
@@ -44,26 +44,28 @@
             <h2 class="col-span-6 headline font-bold">Anda mungkin juga suka</h2>
             @foreach (collect($katalogs)->take(3) as $item)
                 <a href="{{ route('detail', ['id' => $item->id]) }}"
-                    class="card-produk self-center flex flex-col col-span-3 md:col-span-2">
+                    class="card-produk self-center h-full flex flex-col col-span-3 md:col-span-2">
                     <img src="{{ asset('storage/images/' . $item->gambar[0]) }}"
                         class="w-full md:w-full object-cover self-center h-32 md:h-[425px] bg-[#F4F3FC] rounded-2xl"
                         alt="">
                     <div class="flex flex-col gap-1 mt-2">
                         <p class="caption-2 text-neutral-300">{{ $item->kategori }}</p>
                         <p class="caption-2 font-medium">{{ $item->nama }}</p>
-                        
-                        @if ($item->harga_promo)
-                            <p class="price line-through text-gray-400 md:mt-3 font-semibold footnote">
-                                Rp{{ number_format($item->harga, 2, '.', ',') }}
-                            </p>
-                            <p class="price md:mt-3 font-semibold footnote">
-                                Rp{{ number_format($item->harga_promo, 2, '.', ',') }}
-                            </p>
-                        @else
-                            <p class="price md:mt-3 font-semibold footnote">
-                                Rp{{ number_format($item->harga, 2, '.', ',') }}
-                            </p>
-                        @endif
+
+                        <div class="flex flex-col lg:flex-row lg:items-center gap-0 lg:gap-3">
+                            @if ($item->harga_promo)
+                                <p class="price line-through text-gray-400 md:mt-3 font-semibold footnote">
+                                    Rp{{ number_format($item->harga, 2, '.', ',') }}
+                                </p>
+                                <p class="price md:mt-3 font-semibold footnote">
+                                    Rp{{ number_format($item->harga_promo, 2, '.', ',') }}
+                                </p>
+                            @else
+                                <p class="price md:mt-3 font-semibold footnote">
+                                    Rp{{ number_format($item->harga, 2, '.', ',') }}
+                                </p>
+                            @endif
+                        </div>
                     </div>
                 </a>
             @endforeach

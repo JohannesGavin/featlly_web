@@ -51,7 +51,7 @@
                 <div class="row head grid grid-cols-6 gap-8">
                     <div class="col-span-4">
                         <label for="" class="flex gap-4">
-                            <input type="radio" name="" id="">
+                            <input type="radio" name="pengiriman" id="">
                             <div>
                                 <p class="text-sm md:text-base">JNT - Reguler</p>
                                 <p class="text-sm md:text-base">1-2 hari</p>
@@ -65,7 +65,7 @@
                 <div class="row head grid grid-cols-6 gap-8">
                     <div class="col-span-4">
                         <label for="" class="flex gap-4">
-                            <input type="radio" name="" id="">
+                            <input type="radio" name="pengiriman" id="">
                             <div>
                                 <p class="text-sm md:text-base">SiCepat</p>
                                 <p class="text-sm md:text-base">2-5 hari</p>
@@ -87,7 +87,7 @@
                 <div class="row head grid grid-cols-6 gap-8">
                     <div class="col-span-3">
                         <label for="" class="flex gap-4">
-                            <input type="radio" name="" id="">
+                            <input type="radio" name="metode" id="">
                             <p class="text-sm md:text-base">OVO / +62 878 70883466</p>
                         </label>
                     </div>
@@ -95,7 +95,7 @@
                 <div class="row head grid grid-cols-6 gap-8">
                     <div class="col-span-3">
                         <label for="" class="flex gap-4">
-                            <input type="radio" name="" id="">
+                            <input type="radio" name="metode" id="">
                             <p class="text-sm md:text-base">Gopay / +62 878 70883466</p>
                         </label>
                     </div>
@@ -103,7 +103,7 @@
                 <div class="row head grid grid-cols-6 gap-8">
                     <div class="col-span-3">
                         <label for="" class="flex gap-4">
-                            <input type="radio" name="" id="">
+                            <input type="radio" name="metode" id="">
                             <p class="text-sm md:text-base">BCA / 0060xxxxxx</p>
                         </label>
                     </div>
