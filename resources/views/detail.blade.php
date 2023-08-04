@@ -3,6 +3,7 @@
 @section('content')
     <main class="py-14">
         <section class="container px-4 flex gap-5 flex-col md:flex-row">
+
             @include('components.carousel')
 
             <div class="flex-grow flex-1 gap-4 hidden md:grid grid-cols-2">
@@ -12,6 +13,10 @@
                 @endforeach
             </div>
             <div class="flex-1 flex-grow d">
+                @if (session('success'))
+                    <div class="bg-green-100 p-3 rounded-md col-span-12 mb-5 text-green-800">{{ session('success') }}</div>
+                @endif
+
                 <p class="text-xs md:text-base text-primary-main">{{ $katalog->kategori }}</p>
                 <h1 class="text-2xl md:headline font-bold">{{ $katalog->nama }}</h1>
                 <p class="text-sm md:text-lg text-neutral-400">{{ $katalog->detail }}</p>
@@ -32,8 +37,16 @@
                 </div>
 
                 <div class="flex flex-col gap-4 mt-7">
-                    <a href="{{ route('cart') }}" class="btn-outline w-full lg:w-[440px]">Tambahkan ke Keranjang <img
-                            src="{{ asset('assets/img/cart-blue.svg') }}" alt=""></a>
+                    <form method="post" action="{{ route('add-to-cart', ['katalogId' => $katalog->id]) }}">
+                        @csrf
+                        @auth
+                            <button type="submit" class="btn-outline w-full lg:w-[440px]">Tambahkan ke Keranjang <img
+                                    src="{{ asset('assets/img/cart-blue.svg') }}" alt=""></button>
+                        @else
+                            <a href="{{ route('login') }}" class="btn-outline w-full lg:w-[440px]">Tambahkan ke Keranjang <img
+                                    src="{{ asset('assets/img/cart-blue.svg') }}" alt=""></a>
+                        @endauth
+                    </form>
                     <a href="{{ route('wishlist') }}" class="btn-outline w-full lg:w-[440px]">Tambahkan Ke Wishlist <img
                             src="{{ asset('assets/img/love-blue.svg') }}" alt=""></a>
                 </div>

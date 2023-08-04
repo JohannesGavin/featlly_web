@@ -25,50 +25,41 @@
                 </div>
                 <hr>
 
-                <div class="row head grid grid-cols-6 gap-8 text-[18px] text-[#575758]">
-                    <div class="flex gap-3 items-center col-span-2">
-                        <img src="{{ asset('assets/img/baju.png') }}" class="rounded-xl bg-[#E0E0E0] h-[95px] w-[95px]"
-                            alt="">
-
-                        <p class="">Crewneck Rainbow</p>
+                @foreach ($orders as $order)
+                    <div class="row head grid grid-cols-6 gap-8 text-[18px] text-[#575758]">
+                        <div class="flex gap-3 items-start col-span-2 flex-col">
+                            @foreach ($orderCarts[$order->id] as $item)
+                                <div class="flex justify-between">
+                                    <div class="flex gap-3 items-center">
+                                        <img src="{{ asset('storage/images/' . $item->katalog->gambar[0]) }}"
+                                            class="rounded-xl bg-[#E0E0E0] h-[95px] w-[95px]" alt="">
+                                        <p class="">{{ $item->katalog->nama }}</p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                        <div class="flex items-center flex-col gap-20 justify-center">
+                            @foreach ($orderCarts[$order->id] as $item)
+                                <div>{{ $item->count }} buah</div>
+                            @endforeach
+                        </div>
+                        <div class="flex items-center gap-2">
+                            @if ($order->status === 'Sudah Bayar')
+                                <p class="text-center w-full">Selesai</p>
+                            @else
+                                <a href="{{ route('confirm', ['orderId' => $order->id]) }}"
+                                    class="btn py-3 !w-fit min-w-0 px-10 flex items-center text-center">Bayar</a>
+                            @endif
+                        </div>
+                        <div class="flex items-center">
+                            {{ $order->status }}
+                        </div>
+                        <div class="flex items-center">
+                            Rp{{ number_format($order->harga, 2, '.', ',') }}
+                        </div>
                     </div>
-                    <div class="flex items-center">
-                        2 item
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <a href="{{ route('confirm') }}"
-                            class="btn py-3 !w-fit min-w-0 px-10 flex items-center text-center">Bayar</a>
-                    </div>
-                    <div class="flex items-center">
-                        Belum bayar
-                    </div>
-                    <div class="flex items-center">
-                        Rp 198.000
-                    </div>
-                </div>
-                <hr>
-
-                <div class="row head grid grid-cols-6 gap-8 text-[18px] text-[#575758]">
-                    <div class="flex gap-3 items-center col-span-2">
-                        <img src="{{ asset('assets/img/baju.png') }}" class="rounded-xl bg-[#E0E0E0] h-[95px] w-[95px]"
-                            alt="">
-
-                        <p class="">Crewneck Rainbow</p>
-                    </div>
-                    <div class="flex items-center">
-                        2 item
-                    </div>
-                    <div class="flex items-center">
-                        Lunas
-                    </div>
-                    <div class="flex items-center">
-                        Selesai
-                    </div>
-                    <div class="flex items-center">
-                        Rp 198.000
-                    </div>
-                </div>
-                <hr>
+                    <hr>
+                @endforeach
             </div>
         </section>
 

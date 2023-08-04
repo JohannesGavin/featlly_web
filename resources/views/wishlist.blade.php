@@ -27,7 +27,7 @@
                             alt="">
 
                         <div>
-                            <p class="text-sm md:text-base">Crewneck Rainbow</p>
+                            <p class="text-sm md:text-base">Crewneck Plato Projector</p>
                             <p class="lg:hidden text-sm">Rp99.000</p>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                             alt="">
 
                         <div>
-                            <p class="text-sm md:text-base">Crewneck Rainbow</p>
+                            <p class="text-sm md:text-base">Crewneck Plato Projector</p>
                             <p class="lg:hidden text-sm">Rp99.000</p>
                         </div>
                     </div>

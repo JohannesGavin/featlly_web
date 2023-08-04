@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\Katalog;
 use App\Models\User;
+use App\Models\UserOrder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -29,7 +31,7 @@ class PageController extends Controller
         return view('home');
     }
 
-    public function katalog()
+    public function katalog() // fitur filter
     {
         $katalogs = Katalog::all();
         $sale = Katalog::where('is_sale', 1)->get();
@@ -84,7 +86,7 @@ class PageController extends Controller
         return view('create-order');
     }
 
-    public function profil()
+    public function profil() // cek sudah login atau belum
     {
         if (Auth::check()) {
             $user = Auth::user();
@@ -95,9 +97,20 @@ class PageController extends Controller
         return view('profil', ["user" => $user]);
     }
 
-    public function order()
+    public function order() // halaman pesanan
     {
-        return view('order');
+        $orders = UserOrder::where("user_id", Auth::user()->id)
+            ->orderBy('status')
+            ->get();
+        $orderCarts = [];
+
+        foreach ($orders as $order) {
+            $cartIds = json_decode($order->carts, true);
+            $carts = Cart::whereIn('id', $cartIds)->get();
+            $orderCarts[$order->id] = $carts;
+        }
+
+        return view('order', ["orders" => $orders, "orderCarts" => $orderCarts]);
     }
 
     public function orderHistory()

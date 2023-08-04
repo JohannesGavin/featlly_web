@@ -22,4 +22,9 @@ class Katalog extends Model
     protected $casts = [
         'gambar' => 'json',
     ];
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

@@ -11,13 +11,13 @@
                     <a href="{{ route('admin.dashboard') }}">Dashboard Admin</a>
                 @endif
                 <a href="{{ route('order') }}">Pesanan</a>
-                <a href="{{ route('order-history') }}">Riwayat Pembelian</a>
+                
                 <a href="{{ route('logout') }}">Keluar</a>
             </div>
             <div class="col-span-12 lg:col-span-8 lg:mt-0 order-1 md:order-2">
                 <h1 class="text-center headline font-bold">Informasi Akun:</h1>
                 @guest
-                    <div class="flex flex-col gap-8 mt-9 w-[440px] self-center justify-self-center mx-auto">
+                    <div class="flex flex-col gap-8 mt-9 max-w-[440px] self-center justify-self-center mx-auto">
                         <a href="{{ route('login') }}" class="btn text-center w-full">Masuk</a>
                         <a href="{{ route('register') }}" class="btn-outline text-center w-full">Daftar</a>
                     </div>
@@ -25,13 +25,14 @@
                     <div class="mt-9 text-lg flex flex-col gap-7">
                         <div class="grid grid-cols-3">
                             <div class="text-sm md:text-lg font-semibold">Nama Lengkap:</div>
-                            <div class="col-span-2 lg:col-span-2 text-neutral-500 text-sm md:text-lg">{{ $user->name }}</div>
+                            <div class="col-span-2 lg:col-span-2 text-neutral-500 text-sm md:text-lg">{{ Auth::user()->name }}
+                            </div>
                         </div>
                         <div class="grid grid-cols-3">
                             <div class="text-sm md:text-lg font-semibold">Alamat:</div>
                             <div class="col-span-2 lg:col-span-2 text-neutral-500 text-sm md:text-lg">
-                                @if (isset($user->alamat))
-                                    {{ $user->alamat }}
+                                @if (isset(Auth::user()->alamat))
+                                    {{ Auth::user()->alamat }}
                                 @else
                                     -
                                 @endif
@@ -40,8 +41,8 @@
                         <div class="grid grid-cols-3">
                             <div class="text-sm md:text-lg font-semibold">No. Telpon:</div>
                             <div class="col-span-2 lg:col-span-2 text-neutral-500 text-sm md:text-lg">
-                                @if (isset($user->no_telp))
-                                    {{ $user->no_telp }}
+                                @if (isset(Auth::user()->no_telp))
+                                    {{ Auth::user()->no_telp }}
                                 @else
                                     -
                                 @endif

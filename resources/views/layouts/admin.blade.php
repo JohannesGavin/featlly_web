@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     @vite('resources/css/app.css')
 </head>
 
@@ -16,7 +17,7 @@
     <section class="col-span-2">
         <div class="h-full px-10 py-8 flex flex-col fixed bg-white">
             <div class="logo">
-                <a href="/">
+                <a href="{{route("home")}}">
                     <img src="{{ asset('assets/img/logo-featlly.svg') }}" alt=""></a>
             </div>
 

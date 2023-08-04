@@ -3,6 +3,12 @@
 @section('content')
     <main class="py-14">
         <section class="container px-4">
+            @if (session('success'))
+                <div class="bg-green-100 p-3 rounded-md col-span-12 mb-5 text-green-800">{{ session('success') }}</div>
+            @endif
+            @if (session('message'))
+                <div class="bg-green-100 p-3 rounded-md col-span-12 mb-5 text-green-800">{{ session('message') }}</div>
+            @endif
             <div class="hero bg-hero py-[97px] rounded-3xl flex flex-col items-center" data-aos="fade-up">
                 <div class="flex flex-col items-center">
                     <h1 class="text-3xl md:title-1 text-center">
@@ -10,8 +16,8 @@
                         tinggal klik & tunggu di rumah
                     </h1>
                     <p class="text-neutral-500 text-xs md:footnote max-w-[744px] text-center mt-4">kami percaya pada dunia di
-                        mana membeli pakaian bekas adalah pilihan pertama semua orang.</p>
-                    <button class="mt-8 btn text-sm md:text-base">Beli sekarang</button>
+                        mana membeli pakaian bekas adalah pilihan pertama semua orang.</p><br>
+                        <a href="{{ route('katalog') }}" class="btn btn-primary px-10">Beli Sekarang</a>
                 </div>
             </div>
         </section>

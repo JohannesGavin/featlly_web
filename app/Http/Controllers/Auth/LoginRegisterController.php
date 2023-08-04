@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\CustomRules\PopularEmailRule;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -40,21 +42,29 @@ class LoginRegisterController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:250',
-            'email' => 'required|email|max:250|unique:users',
+            'email' => [
+                'required',
+                'email:rfc,dns,filter',
+                'max:250',
+                new PopularEmailRule,
+                'unique:users',
+            ],
             'password' => 'required|min:8'
         ]);
 
-        User::create([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
 
+        event(new Registered($user));
+
         $credentials = $request->only('email', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-        return redirect()->route('profil')
-            ->withSuccess('You have successfully registered & logged in!');
+        return redirect()->route('verification.notice')
+            ->withSuccess('Telah berhasil mendaftar dan masuk! Silakan periksa email Anda untuk memverifikasi dan menyelesaikan registrasi.');
     }
 
     /**
@@ -86,10 +96,10 @@ class LoginRegisterController extends Controller
 
             if ($user->is_admin) {
                 return redirect()->route('admin.dashboard')
-                    ->withSuccess('You have successfully logged in!');
+                    ->withSuccess('Login berhasil!');
             }
             return redirect()->route('profil')
-                ->withSuccess('You have successfully logged in!');
+                ->withSuccess('Login berhasil!');
         }
 
         return back()->withErrors([
@@ -110,7 +120,7 @@ class LoginRegisterController extends Controller
 
         return redirect()->route('login')
             ->withErrors([
-                'email' => 'Please login to access the dashboard.',
+                'email' => 'Login dulu untuk mengakses dashboard!',
             ])->onlyInput('email');
     }
 
@@ -147,6 +157,6 @@ class LoginRegisterController extends Controller
         $model->update($validatedData);
 
         // Redirect or return a response
-        return redirect()->route('profil')->with('success', 'Data updated successfully');
+        return redirect()->route('profil')->with('success', 'Update data berhasil!');
     }
 }
