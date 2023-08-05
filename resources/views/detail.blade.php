@@ -47,8 +47,16 @@
                                     src="{{ asset('assets/img/cart-blue.svg') }}" alt=""></a>
                         @endauth
                     </form>
-                    <a href="{{ route('wishlist') }}" class="btn-outline w-full lg:w-[440px]">Tambahkan Ke Wishlist <img
-                            src="{{ asset('assets/img/love-blue.svg') }}" alt=""></a>
+                    <form method="post" action="{{ route('add-to-wishlist', ['katalogId' => $katalog->id]) }}">
+                        @csrf
+                        @auth
+                            <button type="submit" class="btn-outline w-full lg:w-[440px]">Tambahkan Ke Wishlist <img
+                                    src="{{ asset('assets/img/love-blue.svg') }}" alt=""></button>
+                        @else
+                            <a href="{{ route('login') }}" class="btn-outline w-full lg:w-[440px]">Tambahkan Ke Wishlist <img
+                                    src="{{ asset('assets/img/love-blue.svg') }}" alt=""></a>
+                        @endauth
+                    </form>
                 </div>
             </div>
         </section>

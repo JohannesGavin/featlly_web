@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LoginRegisterController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\KatalogController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\WishlistController;
 use App\Models\Cart;
 use App\Models\Katalog;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -23,7 +24,7 @@ Route::get('/profil', [PageController::class, 'profil'])->name('profil')->middle
 // Group routes for logged user only
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/cart', [CartController::class, 'cartPages'])->name('cart');
-    Route::get('/wishlist', [PageController::class, 'wishlist'])->name('wishlist');
+    Route::get('/wishlist', [WishlistController::class, 'wishlistPages'])->name('wishlist');
     Route::get('/buy-info', [PageController::class, 'buyInfo'])->name('buy-info');
     Route::get('/confirm/{orderId}', [CartController::class, 'confirmOrder'])->name('confirm');
     Route::put('/confirm/{orderId}', [CartController::class, 'confirmPost'])->name("confirm-post");
@@ -35,6 +36,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/inc/{cartId}', [CartController::class, 'incrementCount'])->name("inc-cart");
     Route::put('/dec/{cartId}', [CartController::class, 'decrementCount'])->name("dec-cart");
     Route::delete('/del/{cartId}', [CartController::class, 'destroy'])->name("delete-cart");
+    Route::post('/add-wishlist/{katalogId}', [WishlistController::class, 'store'])->name("add-to-wishlist");
+    Route::post('/add-to-cart/{wishlistId}', [WishlistController::class, 'addToCart'])->name("add-to-cart-wishlist");
+    Route::delete('/del-wishlist/{wishlistId}', [WishlistController::class, 'destroy'])->name("delete-wishlist");
 });
 
 // Group routes for admin section

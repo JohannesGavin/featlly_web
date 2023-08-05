@@ -32,7 +32,7 @@
                             <img src="{{ asset('storage/images/' . $cart->katalog->gambar[0]) }}"
                                 class="rounded-xl bg-[#E0E0E0] h-[95px] w-[95px]" alt="">
                             <div>
-                                <p class="text-sm md:text-base">{{ $cart->katalog->nama }}</p>
+                            <a href="{{ route('detail', ['id' => $cart->katalog->id]) }}">{{ $cart->katalog->nama }}</a>
                                 <p class="lg:hidden text-sm">
                                     Rp{{ number_format($cart->katalog->harga_promo ?? $cart->katalog->harga, 2, '.', ',') }}
                                 </p>
